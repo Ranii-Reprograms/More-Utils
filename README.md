@@ -11,7 +11,7 @@ a **Thorium Mass Driver** and a **Surge Mass Driver**.
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Mass Driver (vanilla) | 3×3 | 380 | 120 | 440 (55 tiles) | 200 | 1.75 | — |
 | **Thorium Mass Driver** | 3×3 | 760 | 180 | 640 (80 tiles) | 150 | 3 | Mass Driver |
-| **Surge Mass Driver** | 4×4 | 1850 | 320 | 880 (110 tiles) | 110 | 5 | Thorium Mass Driver |
+| **Surge Mass Driver** | 5×5 | 1850 | 520 | 1200 (150 tiles) | 110 | 10 | Thorium Mass Driver |
 
 Both blocks are in the **Distribution** category and behave exactly like the vanilla
 mass driver: they link to a matching driver, buffer items, and launch payloads when
@@ -29,7 +29,7 @@ its own signature:
   yellow spark streaks, and a cyan smoke puff. Shells leave a yellow trail with a
   cyan glow.
 
-Both tiers also use a stronger screen shake than vanilla (4 and 5.5 vs. 3) so the
+Both tiers also use a stronger screen shake than vanilla (4 and 10 vs. 3) so the
 larger drivers feel heavier when they fire.
 
 ### Costs
@@ -40,6 +40,7 @@ larger drivers feel heavier when they fire.
 - 175 titanium
 - 150 silicon
 - 100 lead
+- 300 copper
 
 **Surge Mass Driver**
 
@@ -48,6 +49,7 @@ larger drivers feel heavier when they fire.
 - 250 silicon
 - 300 titanium
 - 60 phase fabric
+- 300 graphite
 
 ## Installation
 
@@ -75,8 +77,12 @@ remaps it onto a tier palette, then adds the tier detailing:
   prong tip.
 - **Surge** — blue steel with cyan plating and surge-yellow accents; three
   accelerator collars, a cyan energy spine, a cyan/yellow emitter core and cyan
-  edge ticks on the base. The 4×4 art is upscaled from the vanilla bitmap and
+  edge ticks on the base. The 5×5 art is upscaled from the vanilla bitmap and
   re-quantized so it stays crisp pixel art.
+
+Future blocks should follow the same pipeline: derive from the matching vanilla
+asset, remap the palette, then add hand-placed tier detailing. This keeps every
+addition visually consistent with the base game.
 
 All sprites and the mod icon are generated with [Pillow](https://python-pillow.org/),
 so they can be re-rendered after tweaking the palettes or geometry:
@@ -88,7 +94,7 @@ py -3 tools/generate_sprites.py
 This writes:
 
 - `sprites/thorium-mass-driver.png` / `-base.png` (96×96, 3×3)
-- `sprites/surge-mass-driver.png` / `-base.png` (128×128, 4×4)
+- `sprites/surge-mass-driver.png` / `-base.png` (160×160, 5×5)
 - `icon.png` (128×128)
 - `docs/preview.png` (README preview sheet)
 

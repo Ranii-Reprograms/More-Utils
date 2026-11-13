@@ -13,6 +13,10 @@ gets a full palette remap plus hand-placed tier detailing:
                            three accelerator collars, cyan energy spine,
                            cyan emitter core and prong tips.
 
+New blocks should follow the same pipeline: derive the sprite from the matching
+vanilla asset, remap the palette, then add hand-placed tier detailing. This keeps
+every addition visually consistent with the base game.
+
 Usage:  py -3 tools/generate_sprites.py
 """
 
@@ -69,6 +73,12 @@ SURGE = {
     "arc_hi": (232, 251, 255),
 }
 
+# sprite pixel sizes: 32 px per block tile
+THORIUM_SIZE = 96   # 3x3
+SURGE_SIZE = 160    # 5x5
+# surge detail coordinates were designed at this resolution and are scaled from it
+SURGE_DESIGN = 128
+
 
 # ----------------------------------------------------------------------------
 # helpers
@@ -83,7 +93,7 @@ def remap(img, pal, size=None, alpha_cut=110):
 
     Every pixel is snapped to its nearest vanilla palette entry and then to the
     variant's color for that entry, keeping the hard-edged pixel-art look.
-    Optionally resamples first (used for the 4x4 surge sprites).
+    Optionally resamples first (used for the larger surge sprites).
     """
     if size is not None and img.width != size:
         img = img.resize((size, size), Image.LANCZOS)
@@ -156,8 +166,8 @@ def core(img, x0, y0, x1, y1, pal, inset=2):
 # variants
 # ----------------------------------------------------------------------------
 
-def thorium_turret():
-    img = remap(load_vanilla("mass-driver"), THORIUM)
+def thorium_turret(size=THORIUM_SIZE):
+    img = remap(load_vanilla("mass-driver"), THORIUM, size=size)
     # charge rails running down both sides of the barrel
     rail(img, 40, 18, 31, THORIUM, on=3, off=4, width=1)
     rail(img, 56, 18, 31, THORIUM, on=3, off=4, width=1)
@@ -170,8 +180,8 @@ def thorium_turret():
     return img
 
 
-def thorium_base():
-    img = remap(load_vanilla("mass-driver-base"), THORIUM)
+def thorium_base(size=THORIUM_SIZE):
+    img = remap(load_vanilla("mass-driver-base"), THORIUM, size=size)
     d = ImageDraw.Draw(img)
     for (x0, y0, x1, y1) in ((46, 2, 49, 5), (46, 90, 49, 93)):
         d.rectangle([x0 - 1, y0 - 1, x1 + 1, y1 + 1], fill=THORIUM["outline"])
@@ -180,27 +190,38 @@ def thorium_base():
     return img
 
 
-def surge_turret():
-    img = remap(load_vanilla("mass-driver"), SURGE, size=128)
+def surge_turret(size=SURGE_SIZE):
+    k = size / SURGE_DESIGN
+
+    def s(v):
+        return int(v * k + 0.5)
+
+    img = remap(load_vanilla("mass-driver"), SURGE, size=size)
     # cyan energy spine down the barrel centre (collars are drawn over it)
-    rail(img, 62, 22, 112, SURGE, on=4, off=5, width=2,
-         color=SURGE["arc"], edge=SURGE["arc_dark"])
+    rail(img, s(62), s(22), s(112), SURGE, on=max(1, s(4)), off=max(1, s(5)),
+         width=max(1, s(2)), color=SURGE["arc"], edge=SURGE["arc_dark"])
     # three accelerator collars, slightly wider than the barrel
-    band(img, 47, 80, 11, 8, SURGE, "G", seams=9)
-    band(img, 48, 79, 30, 8, SURGE, "G", seams=9)
-    band(img, 52, 76, 94, 8, SURGE, "G", seams=9)
+    band(img, s(47), s(80), s(11), max(4, s(8)), SURGE, "G", seams=max(2, s(9)))
+    band(img, s(48), s(79), s(30), max(4, s(8)), SURGE, "G", seams=max(2, s(9)))
+    band(img, s(52), s(76), s(94), max(4, s(8)), SURGE, "G", seams=max(2, s(9)))
     # emitter core between the twin muzzle rails
-    core(img, 59, 6, 68, 9, SURGE)
+    core(img, s(59), s(6), s(68), s(9), SURGE, inset=max(1, s(2)))
     # rear prong tip
-    core(img, 59, 117, 68, 121, SURGE, inset=1)
+    core(img, s(59), s(117), s(68), s(121), SURGE, inset=max(1, s(1)))
     return img
 
 
-def surge_base():
-    img = remap(load_vanilla("mass-driver-base"), SURGE, size=128)
+def surge_base(size=SURGE_SIZE):
+    k = size / SURGE_DESIGN
+
+    def s(v):
+        return int(v * k + 0.5)
+
+    img = remap(load_vanilla("mass-driver-base"), SURGE, size=size)
     d = ImageDraw.Draw(img)
     ticks = ((61, 3, 66, 6), (61, 121, 66, 124), (3, 61, 6, 66), (121, 61, 124, 66))
     for (x0, y0, x1, y1) in ticks:
+        x0, y0, x1, y1 = s(x0), s(y0), s(x1), s(y1)
         d.rectangle([x0, y0, x1, y1], fill=SURGE["outline"])
         d.rectangle([x0 + 1, y0 + 1, x1 - 1, y1 - 1], fill=SURGE["G"])
         d.point([x0 + 1, y0 + 1], fill=SURGE["core"])
@@ -256,8 +277,8 @@ def make_icon(size=128):
 
 def make_preview(jobs, scale=2, pad=26, gap=26):
     tiles = []
-    for name, _size, _pal, turret, base in jobs:
-        tile = Image.alpha_composite(base(), turret())
+    for name, size, _pal, turret, base in jobs:
+        tile = Image.alpha_composite(base(size), turret(size))
         tiles.append(tile.resize((tile.width * scale, tile.height * scale), Image.NEAREST))
 
     w = pad * 2 + sum(t.width for t in tiles) + gap * (len(tiles) - 1)
@@ -285,13 +306,13 @@ def main():
     os.makedirs(DOCS, exist_ok=True)
 
     jobs = [
-        ("thorium-mass-driver", 96, THORIUM, thorium_turret, thorium_base),
-        ("surge-mass-driver", 128, SURGE, surge_turret, surge_base),
+        ("thorium-mass-driver", THORIUM_SIZE, THORIUM, thorium_turret, thorium_base),
+        ("surge-mass-driver", SURGE_SIZE, SURGE, surge_turret, surge_base),
     ]
 
     for name, size, pal, turret, base in jobs:
-        base().save(os.path.join(SPRITES, name + "-base.png"))
-        turret().save(os.path.join(SPRITES, name + ".png"))
+        base(size).save(os.path.join(SPRITES, name + "-base.png"))
+        turret(size).save(os.path.join(SPRITES, name + ".png"))
         print(f"wrote {name} ({size}x{size})")
 
     make_icon().save(os.path.join(ROOT, "icon.png"))
