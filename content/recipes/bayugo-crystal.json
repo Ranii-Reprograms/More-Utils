@@ -1,11 +1,11 @@
 {
   "name": "bayugo-crystal",
   "ingredients": [
-    { "item": "slag", "amount": 120 },
     { "item": "silicon", "amount": 80 },
     { "item": "thorium", "amount": 50 },
     { "item": "blast-compound", "amount": 40 },
-    { "liquid": "cryofluid", "amount": 100 }
+    { "liquid": "cryofluid", "amount": 120 },
+    { "liquid": "slag", "amount": 120 }, 
   ],
   "result": { "item": "bayugo-crystal", "amount": 1 },
   "time": 900,
@@ -13,13 +13,13 @@
   "consumes": {
     "power": 20,
     "items": [
-      { "item": "slag", "amount": 120 },
       { "item": "silicon", "amount": 80 },
       { "item": "thorium", "amount": 50 },
       { "item": "blast-compound", "amount": 40 }
     ],
     "liquids": [
-      { "liquid": "cryofluid", "amount": 100 }
+      { "liquid": "cryofluid", "amount": 120 },
+      { "liquid": "slag", "amount": 120 } 
     ]
   },
   "block": "b-b-collider"
