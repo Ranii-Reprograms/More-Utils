@@ -1,0 +1,108 @@
+{
+  "type": "MassDriver",
+  "name": "Thorium Mass Driver",
+  "description": "A reinforced mass driver that launches item payloads over long distances. Slower to reload than its surge counterpart, but far cheaper.",
+  "size": 3,
+  "health": 760,
+  "itemCapacity": 180,
+  "range": 640,
+  "reload": 150,
+  "rotateSpeed": 5,
+  "minDistribute": 15,
+  "translation": 8,
+  "knockback": 4.5,
+  "shake": 4,
+  "bulletSpeed": 6.5,
+  "bulletLifetime": 200,
+  "shootSoundVolume": 0.6,
+  "category": "distribution",
+  "consumes": {
+    "power": 3
+  },
+  "bullet": {
+    "trailEffect": "artilleryTrail",
+    "trailColor": "f9a3c7",
+    "trailWidth": 2.2,
+    "trailLength": 12,
+    "lightColor": "ff74b2",
+    "lightOpacity": 0.3
+  },
+  "shootEffect": [
+    "shootBig2",
+    {
+      "type": "WaveEffect",
+      "colorFrom": "ffd6ea",
+      "colorTo": "f9a3c7",
+      "sizeFrom": 3,
+      "sizeTo": 26,
+      "strokeFrom": 5,
+      "strokeTo": 0,
+      "lifetime": 16,
+      "lightColor": "ff74b2",
+      "lightOpacity": 0.5
+    },
+    {
+      "type": "ParticleEffect",
+      "line": true,
+      "particles": 10,
+      "length": 20,
+      "cone": 26,
+      "colorFrom": "ffe8f2",
+      "colorTo": "f9a3c7",
+      "strokeFrom": 3,
+      "strokeTo": 0.4,
+      "lenFrom": 7,
+      "lenTo": 2,
+      "lifetime": 14,
+      "lightColor": "ff74b2",
+      "lightOpacity": 0.5
+    },
+    {
+      "type": "ParticleEffect",
+      "particles": 5,
+      "length": 7,
+      "cone": 70,
+      "sizeFrom": 4,
+      "sizeTo": 7,
+      "colorFrom": "6b5562aa",
+      "colorTo": "3a2f3700",
+      "lifetime": 24
+    }
+  ],
+  "smokeEffect": [
+    "shootBigSmoke2",
+    {
+      "type": "ParticleEffect",
+      "particles": 4,
+      "length": 6,
+      "cone": 80,
+      "sizeFrom": 3,
+      "sizeTo": 6,
+      "colorFrom": "f9a3c766",
+      "colorTo": "f9a3c700",
+      "lifetime": 20
+    }
+  ],
+  "receiveEffect": [
+    "mineBig",
+    {
+      "type": "WaveEffect",
+      "colorFrom": "ffd6ea",
+      "colorTo": "f9a3c7",
+      "sizeFrom": 2,
+      "sizeTo": 20,
+      "strokeFrom": 4,
+      "strokeTo": 0,
+      "lifetime": 14,
+      "lightColor": "ff74b2",
+      "lightOpacity": 0.45
+    }
+  ],
+  "requirements": [
+    { "item": "thorium", "amount": 150 },
+    { "item": "titanium", "amount": 175 },
+    { "item": "silicon", "amount": 150 },
+    { "item": "lead", "amount": 100 }
+  ],
+  "research": "mass-driver"
+}

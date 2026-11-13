@@ -1,0 +1,162 @@
+{
+  "type": "MassDriver",
+  "name": "Surge Mass Driver",
+  "description": "A colossal mass driver lined with surge-alloy rails. Launches huge payloads across the entire sector and reloads almost twice as fast as a standard driver.",
+  "size": 4,
+  "health": 1850,
+  "itemCapacity": 320,
+  "range": 880,
+  "reload": 110,
+  "rotateSpeed": 4.5,
+  "minDistribute": 20,
+  "translation": 10,
+  "knockback": 6,
+  "shake": 5.5,
+  "bulletSpeed": 7.5,
+  "bulletLifetime": 220,
+  "shootSoundVolume": 0.75,
+  "category": "distribution",
+  "consumes": {
+    "power": 5
+  },
+  "bullet": {
+    "trailEffect": "artilleryTrail",
+    "trailColor": "f3e979",
+    "trailWidth": 3,
+    "trailLength": 16,
+    "lightColor": "6fe0ff",
+    "lightOpacity": 0.35
+  },
+  "shootEffect": [
+    "shootBig2",
+    {
+      "type": "WaveEffect",
+      "colorFrom": "e8fdff",
+      "colorTo": "80d6ff",
+      "sizeFrom": 4,
+      "sizeTo": 34,
+      "strokeFrom": 6,
+      "strokeTo": 0,
+      "lifetime": 18,
+      "lightColor": "80d6ff",
+      "lightOpacity": 0.55
+    },
+    {
+      "type": "WaveEffect",
+      "colorFrom": "fdf7b0",
+      "colorTo": "f3e979",
+      "sizeFrom": 2,
+      "sizeTo": 22,
+      "strokeFrom": 3,
+      "strokeTo": 0,
+      "lifetime": 14,
+      "startDelay": 2,
+      "lightColor": "f3e979",
+      "lightOpacity": 0.5
+    },
+    {
+      "type": "ParticleEffect",
+      "line": true,
+      "particles": 14,
+      "length": 26,
+      "cone": 24,
+      "colorFrom": "e8fdff",
+      "colorTo": "80d6ff",
+      "strokeFrom": 3.5,
+      "strokeTo": 0.4,
+      "lenFrom": 8,
+      "lenTo": 2,
+      "lifetime": 16,
+      "lightColor": "80d6ff",
+      "lightOpacity": 0.55
+    },
+    {
+      "type": "ParticleEffect",
+      "line": true,
+      "particles": 9,
+      "length": 22,
+      "cone": 55,
+      "colorFrom": "fdf7b0",
+      "colorTo": "f3e979",
+      "strokeFrom": 2.5,
+      "strokeTo": 0.3,
+      "lenFrom": 6,
+      "lenTo": 1,
+      "lifetime": 12,
+      "lightColor": "f3e979",
+      "lightOpacity": 0.5
+    },
+    {
+      "type": "ParticleEffect",
+      "particles": 6,
+      "length": 8,
+      "cone": 70,
+      "sizeFrom": 5,
+      "sizeTo": 9,
+      "colorFrom": "4a6172aa",
+      "colorTo": "22303a00",
+      "lifetime": 26
+    }
+  ],
+  "smokeEffect": [
+    "shootBigSmoke2",
+    {
+      "type": "ParticleEffect",
+      "particles": 5,
+      "length": 7,
+      "cone": 80,
+      "sizeFrom": 3,
+      "sizeTo": 7,
+      "colorFrom": "80d6ff66",
+      "colorTo": "80d6ff00",
+      "lifetime": 22
+    },
+    {
+      "type": "ParticleEffect",
+      "line": true,
+      "particles": 3,
+      "length": 10,
+      "cone": 40,
+      "colorFrom": "f3e979",
+      "colorTo": "f3e97900",
+      "strokeFrom": 1.5,
+      "strokeTo": 0,
+      "lifetime": 10
+    }
+  ],
+  "receiveEffect": [
+    "mineBig",
+    {
+      "type": "WaveEffect",
+      "colorFrom": "e8fdff",
+      "colorTo": "80d6ff",
+      "sizeFrom": 3,
+      "sizeTo": 26,
+      "strokeFrom": 5,
+      "strokeTo": 0,
+      "lifetime": 16,
+      "lightColor": "80d6ff",
+      "lightOpacity": 0.5
+    },
+    {
+      "type": "ParticleEffect",
+      "line": true,
+      "particles": 8,
+      "length": 16,
+      "cone": 180,
+      "colorFrom": "fdf7b0",
+      "colorTo": "f3e979",
+      "strokeFrom": 2,
+      "strokeTo": 0,
+      "lifetime": 12
+    }
+  ],
+  "requirements": [
+    { "item": "surge-alloy", "amount": 200 },
+    { "item": "thorium", "amount": 250 },
+    { "item": "silicon", "amount": 250 },
+    { "item": "titanium", "amount": 300 },
+    { "item": "phase-fabric", "amount": 60 }
+  ],
+  "research": "thorium-mass-driver"
+}
