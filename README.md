@@ -2,7 +2,7 @@
 
 A small Mindustry mod that adds two late-game upgrades to the vanilla mass driver:
 a **Thorium Mass Driver** and a **Surge Mass Driver**, plus Bayugo Crystals, the
-B.B Collider factory, and the Core Vault storage building.
+B.B Collider factory, and the Manong Vault storage building.
 
 ![Preview](docs/preview.png)
 
@@ -35,7 +35,7 @@ larger drivers feel heavier when they fire.
 
 ## Bayugo Crystal
 
-A volatile grey crystal synthesized in the B.B Collider. Used to build the Core
+A highly volatile grey colored crystal formed from using unnatural methods to synthesize in the B.B Collider. Used to build the Manong
 Vault and as a late-game strategic material.
 
 | Property | Value |
@@ -47,7 +47,7 @@ Vault and as a late-game strategic material.
 
 ## The B.B Collider
 
-A massive 5×5 particle collider that synthesizes Bayugo Crystals. Late-game only,
+A massive 5×5 particle collider that synthesizes materials that dont normally combine into rare  and highly volatile Bayugo Crystals. Late-game only,
 high power draw, expensive to build.
 
 | Property | Value |
@@ -62,25 +62,26 @@ high power draw, expensive to build.
 **Build cost:**
 
 - 350 surge alloy
-- 120 phase fabric
 - 300 thorium
 - 250 silicon
 - 250 titanium
 - 200 plastanium
+- 120 phase fabric
 
 **Craft recipe (per crystal):**
 
 - 120 slag
+- 100 cryofluid
 - 80 silicon
 - 50 thorium
 - 40 blast-compound
-- 100 cryofluid
 
-## Core Vault
+## Manong Vault
 
-A colossal 7×7 storage vault engineered to interface directly with your core's
+- A colossal 7×7 storage vault engineered to interface directly with your core's
 inventory. Place it anywhere and route belts straight into it - items flow to and
 from core storage. Extremely expensive, late-game strategic building.
+- Named after a prized engineer with consumer-storage expertise.
 
 | Property | Value |
 | --- | --- |
@@ -92,74 +93,47 @@ from core storage. Extremely expensive, late-game strategic building.
 
 **Build cost:**
 
-- 250 Bayugo Crystals
 - 600 surge alloy
-- 250 phase fabric
 - 500 thorium
-- 400 plastanium
 - 500 titanium
+- 400 plastanium
+- 250 phase fabric
+- 250 bayugo crystals
 
 ### Core inventory note
 
-The Core Vault is designed to link to your core's logistics network so you can
+- The Manong Vault is designed to link to your core's logistics network so you can
 input/output items away from the crowded core area. True shared-core-inventory
 behaviour requires custom game logic beyond pure JSON content; this release ships
 the vault as a high-capacity storage block (20,000 items) that you can place
 anywhere to decentralize your core's buffer.
+- Manong Vault ensures that no matter how many rice you consume, as long as your rice fields are running, you. will always. strive.
 
 ### Costs
 
 **Thorium Mass Driver**
 
-- 150 thorium
-- 175 titanium
-- 150 silicon
-- 100 lead
+- 185 thorium
+- 150 titanium
+- 125 silicon
+- 200 lead
 - 300 copper
 
 **Surge Mass Driver**
 
+- 60 phase fabric
 - 200 surge alloy
 - 250 thorium
 - 250 silicon
 - 300 titanium
-- 60 phase fabric
 - 300 graphite
 
 ## Installation
+- Using the in-game mod browser or Skhallops/More-Utils
 
-1. Download or build the mod folder/zip.
-2. In Mindustry, open **Mods → Import Mod** and select the `.zip`, or drop the
-   folder into your mods directory:
-   - Windows: `%APPDATA%\Mindustry\mods\`
-   - Linux: `~/.local/share/Mindustry/mods/`
-   - macOS: `~/Library/Application Support/Mindustry/mods/`
-3. Restart the game or reload mods.
-
-Requires **Mindustry v8 (build 160 or newer)**. The mod is data-only (JSON), so it
+- Requires **Mindustry v8 (build 160 or newer)**. The mod is data-only (JSON), so it
 works on desktop and mobile, in singleplayer and on servers (the server needs the
 mod installed too).
-
-## Versioning
-
-Releases use the four-part scheme `1.x.xx.x`:
-
-- `1` — project generation (fixed)
-- `x` — major content update (new blocks/features)
-- `xx` — minor update, zero-padded (`00`–`99`)
-- `x` — hotfix/patch
-
-The in-game version in `mod.hjson` and the GitHub release tag must always match:
-mod `1.2.00.0` ↔ GitHub tag/release `v1.2.00.0`. For example: a new feature bumps
-the second number (`1.2.00.0`), a balance pass bumps the third (`1.2.01.0`), and a
-bugfix bumps the last (`1.2.01.1`).
-
-## How the sprites are made
-
-The turret sprites are derived from Mindustry's own `mass-driver.png` (kept in
-`tools/vanilla/`), so the silhouette, pixel density and shading match the vanilla
-driver exactly. The generator snaps every pixel to the vanilla 5-color palette and
-remaps it onto a tier palette, then adds the tier detailing:
 
 - **Thorium** — mauve steel with rose plating and thorium-pink accents; a muzzle
   accelerator collar, dashed charge rails, a pink emitter core and a glowing rear
@@ -187,7 +161,7 @@ This writes:
 - `sprites/surge-mass-driver.png` / `-base.png` (160×160, 5×5)
 - `sprites/bayugo-crystal.png` (32×32, item)
 - `sprites/b-b-collider.png` / `-base.png` (160×160, 5×5)
-- `sprites/core-vault.png` / `-base.png` (224×224, 7×7)
+- `sprites/manong-vault.png` / `-base.png` (224×224, 7×7)
 - `icon.png` (128×128)
 - `docs/preview.png` (README preview sheet)
 
@@ -201,20 +175,6 @@ static base (`<name>-base.png`).
 > is licensed under the **GPLv3**. The tier sprites here are derivative works of
 > that asset and are distributed under the same license.
 
-## Packaging a release
-
-Only these are needed at runtime:
-
-```text
-mod.hjson
-icon.png
-content/
-sprites/
-```
-
-`tools/` (sprite generator) and `docs/` (preview) can be left out of the release
-archive.
-
 ## Notes
 
 - Balance is tuned as an endgame tier above the vanilla driver; edit the JSON files
@@ -222,3 +182,7 @@ archive.
 - `"name"` and `"description"` are set inline in each block JSON, so display names
   and descriptions are added to the bundle at load time without a separate
   `bundles/` file.
+
+### Also Worth Mentioning
+- Always do basic human hygiene like showering and brushing teeth before you engage in outdoor activities.
+- It is advised that you wear socks because some individuals find it funny when you dont wear one, emotional precausions are worth keepibg in mind when in scenarios like these.
