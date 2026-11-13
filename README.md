@@ -65,6 +65,20 @@ Requires **Mindustry v8 (build 160 or newer)**. The mod is data-only (JSON), so 
 works on desktop and mobile, in singleplayer and on servers (the server needs the
 mod installed too).
 
+## Versioning
+
+Releases use the four-part scheme `1.x.xx.x`:
+
+- `1` — project generation (fixed)
+- `x` — major content update (new blocks/features)
+- `xx` — minor update, zero-padded (`00`–`99`)
+- `x` — hotfix/patch
+
+The in-game version in `mod.hjson` and the GitHub release tag must always match:
+mod `1.1.00.0` ↔ GitHub tag/release `v1.1.00.0`. For example: a new feature bumps
+the second number (`1.2.00.0`), a balance pass bumps the third (`1.2.01.0`), and a
+bugfix bumps the last (`1.2.01.1`).
+
 ## How the sprites are made
 
 The turret sprites are derived from Mindustry's own `mass-driver.png` (kept in
