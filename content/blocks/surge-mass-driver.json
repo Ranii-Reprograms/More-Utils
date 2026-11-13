@@ -2,22 +2,22 @@
   "type": "MassDriver",
   "name": "Surge Mass Driver",
   "description": "A colossal mass driver lined with surge-alloy rails. Launches huge payloads across the entire sector and reloads almost twice as fast as a standard driver.",
-  "size": 4,
+  "size": 5,
   "health": 1850,
-  "itemCapacity": 320,
-  "range": 880,
+  "itemCapacity": 520,
+  "range": 1200,
   "reload": 110,
   "rotateSpeed": 4.5,
   "minDistribute": 20,
   "translation": 10,
   "knockback": 6,
-  "shake": 5.5,
+  "shake": 10,
   "bulletSpeed": 7.5,
   "bulletLifetime": 220,
   "shootSoundVolume": 0.75,
   "category": "distribution",
   "consumes": {
-    "power": 5
+    "power": 10
   },
   "bullet": {
     "trailEffect": "artilleryTrail",
@@ -156,7 +156,8 @@
     { "item": "thorium", "amount": 250 },
     { "item": "silicon", "amount": 250 },
     { "item": "titanium", "amount": 300 },
-    { "item": "phase-fabric", "amount": 60 }
+    { "item": "phase-fabric", "amount": 60 },
+    { "item": "graphite", "amount": 300 }
   ],
   "research": "thorium-mass-driver"
 }
