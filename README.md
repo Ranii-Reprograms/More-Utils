@@ -86,7 +86,7 @@ from core storage. Extremely expensive, late-game strategic building.
 | Property | Value |
 | --- | --- |
 | Size | 7×7 |
-| Health | 9000 |
+| Health | 13000 |
 | Item capacity | 20000 |
 | Category | Storage |
 | Research | The B.B Collider |
