@@ -102,7 +102,8 @@
     { "item": "thorium", "amount": 150 },
     { "item": "titanium", "amount": 175 },
     { "item": "silicon", "amount": 150 },
-    { "item": "lead", "amount": 100 }
+    { "item": "lead", "amount": 100 },
+    { "item": "copper", "amount": 300 }
   ],
   "research": "mass-driver"
 }
