@@ -118,7 +118,7 @@ def main():
     rect(d, m - 1, m - 1, m + 1, m + 1, GREY["glint"])
     save_sprite(img, "b-b-collider-base")
 
-    # ---- Core Vault (7x7 = 224x224) ----
+    # ---- Manong Vault (7x7 = 224x224) ----
     size = 224
     img = Image.new("RGBA", (size, size), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
@@ -127,7 +127,7 @@ def main():
     m = size // 2
     rect(d, m - 3, m - 3, m + 3, m + 3, GREY["O"])
     rect(d, m - 1, m - 1, m + 1, m + 1, GREY["core"])
-    save_sprite(img, "core-vault")
+    save_sprite(img, "manong-vault")
 
     img = Image.new("RGBA", (size, size), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
@@ -140,7 +140,7 @@ def main():
     rect(d, size - 18, m - 40, size - 8, m + 40, GREY["M"])
     rect(d, m - 4, m - 4, m + 4, m + 4, GREY["O"])
     rect(d, m - 2, m - 2, m + 2, m + 2, GREY["core"])
-    save_sprite(img, "core-vault-base")
+    save_sprite(img, "manong-vault-base")
 
 
 if __name__ == "__main__":
